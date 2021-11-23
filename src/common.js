@@ -1,6 +1,9 @@
-const enhanceLunr = (lunr, lngs) => {
+const enhanceLunr = (lunr, lngs, multi) => {
   if (lngs.length) {
     require('lunr-languages/lunr.stemmer.support')(lunr)
+    if (multi){
+      require('lunr-languages/lunr.multi')(lunr)
+    }
     lngs.forEach(({name}) => {
       if (name !== 'en') {
         try {
